@@ -72,7 +72,6 @@ h2.title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,
 @keyframes pl{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.4)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}}
 
 /* ABOUT */
-/* ABOUT */
 #about{background:linear-gradient(to bottom, var(--bg) 0%, var(--bg2) 15%, var(--bg2) 100%)}
 
 .ab-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:4rem;align-items:center;margin-top:3rem}
@@ -241,6 +240,195 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.4rem 2rem;di
   /* RESPONSIVE ABOUT HP */
   .ab-info{grid-template-columns:1fr}
 }
+  /* TECH ORBIT */
+/* Wrapper utama tech orbit */
+.tech-orbit-wrapper {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  margin: 0 auto;
+}
+ 
+/* Floating Badges */
+.float-badge {
+  position: absolute;
+  background: #fff;
+  border: 1.5px solid #e0deff;
+  border-radius: 50px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a2e;
+  box-shadow: 0 3px 12px rgba(108, 92, 231, 0.08);
+  white-space: nowrap;
+  z-index: 20;
+}
+ 
+.float-badge-1 {
+  top: -10px;
+  right: -20px;
+  animation: floatUp 3s ease-in-out infinite;
+}
+ 
+.float-badge-2 {
+  bottom: 30px;
+  left: -30px;
+  animation: floatUp 3s ease-in-out infinite 1.5s;
+}
+ 
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+ 
+.fbdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #a8ff78;
+  animation: pulseDot 1.5s infinite;
+  flex-shrink: 0;
+}
+ 
+.fbdot2 { background: #74b9ff; }
+ 
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(0.8); }
+}
+ 
+/* Orbit rings */
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1.5px dashed #e0deff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+ 
+.ring-1 {
+  width: 200px;
+  height: 200px;
+  animation: spinRing 12s linear infinite;
+}
+ 
+.ring-2 {
+  width: 320px;
+  height: 320px;
+  animation: spinRing 20s linear infinite reverse;
+}
+ 
+@keyframes spinRing {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+ 
+/* Tech node cards */
+.tech-node {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  background: #fff;
+  border-radius: 14px;
+  border: 1.5px solid #e0deff;
+  box-shadow: 0 3px 14px rgba(108, 92, 231, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #6c5ce7;
+  /* Counter-rotate biar icon tetap tegak meski ring berputar */
+  animation: counterRotate1 12s linear infinite reverse;
+}
+ 
+.ring-2 .tech-node {
+  animation: counterRotate2 20s linear infinite;
+}
+ 
+@keyframes counterRotate1 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+ 
+@keyframes counterRotate2 {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(-360deg); }
+}
+ 
+/* Posisi node di ring dalam (ring-1) — atas, kanan, bawah, kiri */
+.tn1 { top: -27px;  left: 50%; transform: translateX(-50%); }
+.tn2 { top: 50%;    right: -27px; transform: translateY(-50%); }
+.tn3 { bottom: -27px; left: 50%; transform: translateX(-50%); }
+.tn4 { top: 50%;    left: -27px; transform: translateY(-50%); }
+ 
+/* Counter-rotate untuk masing-masing posisi di ring-1 */
+.ring-1 .tn1 { animation: counterXCenter 12s linear infinite reverse; }
+.ring-1 .tn3 { animation: counterXCenter 12s linear infinite reverse; }
+.ring-1 .tn2 { animation: counterYCenter 12s linear infinite reverse; }
+.ring-1 .tn4 { animation: counterYCenter 12s linear infinite reverse; }
+ 
+@keyframes counterXCenter {
+  from { transform: translateX(-50%) rotate(0deg); }
+  to   { transform: translateX(-50%) rotate(360deg); }
+}
+@keyframes counterYCenter {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to   { transform: translateY(-50%) rotate(360deg); }
+}
+ 
+/* Posisi node di ring luar (ring-2) — sudut */
+.tn5 { top: 10px;    left: 10px; }
+.tn6 { top: 10px;    right: 10px; }
+.tn7 { bottom: 10px; right: 10px; }
+.tn8 { bottom: 10px; left: 10px; }
+ 
+/* Counter-rotate untuk ring-2 */
+.ring-2 .tn5,
+.ring-2 .tn6,
+.ring-2 .tn7,
+.ring-2 .tn8 {
+  animation: counterRotate2 20s linear infinite;
+}
+ 
+/* Center card */
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  border-radius: 24px;
+  border: 1.5px solid #e0deff;
+  box-shadow: 0 4px 24px rgba(108, 92, 231, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  z-index: 10;
+}
+ 
+.orbit-center-icon {
+  font-size: 34px;
+  line-height: 1;
+}
+ 
+.orbit-center-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6c5ce7;
+  text-align: center;
+  line-height: 1.4;
+}
 </style>
 </head>
 <body>
@@ -295,12 +483,120 @@ footer{background:#fff;border-top:1px solid var(--border);padding:1.4rem 2rem;di
     </div>
     
     <div class="h-photo">
-      <div class="h-photo-wrapper">
-        <img src="foto-profil-alvin.jpg" alt="Alviansyah Nurhidayat Yahya" class="h-img" onerror="this.style.background='linear-gradient(135deg,#EAE8FF,#FEF8E7)'">
-      </div>
-      <div class="h-badge"><span class="bdot"></span>Open to Collaborate</div>
+  <div class="tech-orbit-wrapper">
+ 
+    <!-- Floating Badges -->
+    <div class="float-badge float-badge-1">
+      <span class="fbdot"></span>Open to Collaborate
     </div>
+    <div class="float-badge float-badge-2">
+      <span class="fbdot fbdot2"></span>Available for Internship
+    </div>
+ 
+    <!-- Ring Dalam (berputar) -->
+    <div class="orbit-ring ring-1">
+      <!-- Flutter -->
+      <div class="tech-node tn1">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <path fill="#54C5F8" d="M12.3 64.2C15.5 32.7 38.6 7.5 69.5 1.7L72.1 0h-6.4C36.7 0 10.5 18.7 2.6 46.3L.7 52.6l.8 5.4c.4 2.1.8 4.1 1.3 6.1l1.2-.2 8.3-.3v.6z"/>
+          <path fill="#54C5F8" d="M64 128c-6.5 0-12.8-.9-18.8-2.7l-3.6-.2-4.9-7.9 1.7-3.3c3.4-6.5 7.5-12.8 12.2-18.5l.2.6 5.8 10.1-1.7-10.8 5.8-9.8.7.1 5.8 9.8-1.7 10.8 5.8-10.1.2-.6c4.7 5.7 8.8 12.1 12.2 18.5l1.7 3.3-4.9 7.9-3.6.2c-6 1.8-12.3 2.7-18.9 2.7z"/>
+          <path fill="#01579B" d="M2.6 46.3C10.5 18.7 36.7 0 65.7 0h6.4L69.5 1.7C38.6 7.5 15.5 32.7 12.3 64.2v-.6l-8.3.3-1.2.2c-.5-2-.9-4-1.3-6.1L.7 52.6l1.9-6.3z"/>
+          <path fill="#01579B" d="M45.2 125.3C17.9 116.4-.3 90.5 0 62.5l.1-3.8 12.2-.3v.6c0 34.6 28.1 62.7 62.7 62.7h.1c-9.5 1.5-19.2 1-29.9 3.6z"/>
+          <path fill="#29B6F6" d="M109.1 99.2c-8.8 14.4-23.3 24.4-39.9 27.1l-24-41.6 5.7-3.3-.5-1.5c-2.2-6.4-3.3-13.1-3.3-19.8 0-35.2 28.5-63.7 63.7-63.7 4.4 0 8.7.4 12.9 1.3L109.1 99.2z"/>
+        </svg>
+        <span>Flutter</span>
+      </div>
+      <!-- HTML -->
+      <div class="tech-node tn2">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <path fill="#E44D26" d="M9.032 2l10.005 112.093 44.896 12.401 45.02-12.387L118.968 2H9.032zm89.126 26.539l-.627 7.172-.331 3.615H44.59l1.257 14h50.156l-3.779 41.621-28.274 7.87-28.2-7.87-1.924-21.578H47.44l.995 11.168 15.946 4.308 15.972-4.308 1.657-18.479H41.24L37.47 28.539h53.688z"/>
+        </svg>
+        <span>HTML</span>
+      </div>
+      <!-- CSS -->
+      <div class="tech-node tn3">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <path fill="#1572B6" d="M18.814 114.123L8.76 1.352h110.48l-10.064 112.754-45.243 12.543-45.119-12.526z"/>
+          <path fill="#33A9DC" d="M64.001 117.062l36.559-10.136 8.601-96.354H64.001v106.49z"/>
+          <path fill="#fff" d="M64.001 51.429h18.302l1.264-14.163H64.001V23.435h34.682l-.332 3.711-3.4 38.114h-31.95V51.429z"/>
+          <path fill="#EBEBEB" d="M64.083 87.349l-.061.018-15.403-4.159-.985-11.031H33.752l1.937 21.717 28.331 7.863.063-.018v-14.39z"/>
+          <path fill="#fff" d="M64.001 87.349v14.373l28.4-7.871 3.768-42.222H64.001v14.169h16.92l-1.614 18.194z"/>
+          <path fill="#EBEBEB" d="M64.083 23.435H29.606l.331 3.711 3.4 38.114h30.746V51.429H47.484l-1.257-14h17.856V23.435z"/>
+        </svg>
+        <span>CSS</span>
+      </div>
+      <!-- JavaScript -->
+      <div class="tech-node tn4">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <path fill="#F0DB4F" d="M1.408 1.408h125.184v125.185H1.408z"/>
+          <path fill="#323330" d="M116.347 96.736c-.917-5.711-4.641-10.508-15.672-14.981-3.832-1.761-8.104-3.022-9.377-5.926-.452-1.69-.512-2.642-.226-3.665.821-3.32 4.784-4.355 7.925-3.403 2.023.678 3.938 2.237 5.093 4.724 5.402-3.498 5.391-3.475 9.163-5.879-1.381-2.141-2.118-3.129-3.022-4.045-3.249-3.629-7.676-5.498-14.756-5.355l-3.688.477c-3.534.893-6.902 2.748-8.877 5.235-5.926 6.724-4.236 18.492 2.975 23.335 7.104 5.332 17.54 6.545 18.873 11.531 1.297 6.104-4.486 8.08-10.234 7.378-4.236-.881-6.592-3.034-9.139-6.949-4.688 2.713-4.688 2.713-9.508 5.485 1.143 2.499 2.344 3.63 4.26 5.795 9.068 9.198 31.76 8.746 35.83-5.176.165-.478 1.261-3.666.963-8.558zm-46.616-98.018c-39.525 0-71.586 32.057-71.586 71.583 0 39.526 32.061 71.587 71.586 71.587 39.525 0 71.584-32.061 71.584-71.587 0-39.526-32.059-71.583-71.584-71.583zm0 131.791c-33.148 0-60.204-27.057-60.204-60.208 0-33.148 27.056-60.206 60.204-60.206 33.147 0 60.207 27.058 60.207 60.206 0 33.151-27.06 60.208-60.207 60.208z"/>
+          <path fill="#323330" d="M80.91 70.78h-9.821c0 4.554-.025 9.061-.025 13.615 0 2.892.149 5.559-.323 6.37-.786 1.657-2.796 1.454-3.717 1.157-1.011-.373-1.528-1.11-2.135-2.17-.162-.282-.226-.484-.25-.484l-7.987 4.916c1.331 2.72 3.297 5.07 5.803 6.578 3.803 2.25 8.927 2.797 14.284 1.557 3.512-.882 6.523-2.944 8.104-6.235 2.258-4.459 1.767-9.986 1.767-15.268.05-3.353 0-6.682 0-10.035z"/>
+        </svg>
+        <span>JS</span>
+      </div>
+    </div>
+ 
+    <!-- Ring Luar (berputar balik) -->
+    <div class="orbit-ring ring-2">
+      <!-- Laravel -->
+      <div class="tech-node tn5">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <path fill="#FF2D20" d="M106.6 45.67c.01.2.01.4.01.6 0 6.3-3.43 12.19-8.98 15.35L73.5 75.18v28.12a17.7 17.7 0 01-8.84 15.32L42.42 130.8a17.62 17.62 0 01-17.63 0l-16.1-9.3a17.7 17.7 0 01-8.84-15.32V69.65a17.7 17.7 0 018.84-15.32L30.9 40.26v-27a17.7 17.7 0 018.84-15.32L61.96-14.25a17.62 17.62 0 0117.63 0l22.21 12.82a17.7 17.7 0 018.84 15.32l-.04 31.78z"/>
+        </svg>
+        <span>Laravel</span>
+      </div>
+      <!-- PHP -->
+      <div class="tech-node tn6">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <path fill="#6181B6" d="M0 64c0 18.59 28.65 33.68 64 33.68S128 82.59 128 64 99.35 30.32 64 30.32 0 45.41 0 64z"/>
+          <path fill="#fff" d="M38.46 58.6h4.29c2.84 0 4.65 1.38 4.37 4.64-.28 3.26-2.38 4.77-5.37 4.77h-2.14l-.9 4.51h-3.55l3.3-13.92zm2.82 6.58h1.36c1.32 0 2.48-.3 2.67-1.95.18-1.64-.73-1.85-1.99-1.85h-1.45l-.59 3.8zM51.57 56.04h3.56l-.79 4.02h2.89c2.8.06 3.96 1.38 3.44 4.02l-1.17 5.93h-3.6l1.09-5.51c.23-1.15.07-1.82-1.1-1.82h-2.52l-1.41 7.33h-3.56l3.17-13.97zM65.3 58.6h7.02l-.58 2.73h-3.51l-.53 2.58h3.27l-.54 2.72h-3.27l-.56 2.89h3.55l-.55 2.73h-7.08L65.3 58.6z"/>
+        </svg>
+        <span>PHP</span>
+      </div>
+      <!-- Kotlin -->
+      <div class="tech-node tn7">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <linearGradient id="kt1" x1="500.003" x2="-.097" y1="579.106" y2="1079.206" gradientTransform="translate(-.36 -509.803) scale(.2542)" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#1C93C5"/>
+            <stop offset=".497" stop-color="#2271AF"/>
+            <stop offset="1" stop-color="#925ACB"/>
+          </linearGradient>
+          <path fill="url(#kt1)" d="M0 128L64 64 128 128z"/>
+          <linearGradient id="kt2" x1="-.36" x2="127.64" y1="63.995" y2="63.995" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#1C93C5"/>
+            <stop offset="1" stop-color="#925ACB"/>
+          </linearGradient>
+          <path fill="url(#kt2)" d="M0 0h64L0 70V0z"/>
+          <linearGradient id="kt3" x1="63.995" x2="127.745" y1="64.005" y2="-.245" gradientUnits="userSpaceOnUse">
+            <stop offset="0" stop-color="#2271AF"/>
+            <stop offset="1" stop-color="#925ACB"/>
+          </linearGradient>
+          <path fill="url(#kt3)" d="M64 0l64 64L64 128 128 64z"/>
+        </svg>
+        <span>Kotlin</span>
+      </div>
+      <!-- Figma -->
+      <div class="tech-node tn8">
+        <svg viewBox="0 0 128 128" width="26" height="26">
+          <path fill="#F24E1E" d="M44.69 64A19.31 19.31 0 0164 44.69 19.31 19.31 0 0183.31 64 19.31 19.31 0 0164 83.31 19.31 19.31 0 0144.69 64z"/>
+          <path fill="#FF7262" d="M44.69 64A19.31 19.31 0 0164 44.69V83.31A19.31 19.31 0 0144.69 64z"/>
+          <path fill="#1ABCFE" d="M64 44.69A19.31 19.31 0 0183.31 25.38 19.31 19.31 0 01102.62 44.69 19.31 19.31 0 0183.31 64 19.31 19.31 0 0164 44.69z"/>
+          <path fill="#0ACF83" d="M25.38 102.62A19.31 19.31 0 0144.69 83.31H64v19.31A19.31 19.31 0 0144.69 122 19.31 19.31 0 0125.38 102.62z"/>
+          <path fill="#A259FF" d="M25.38 64A19.31 19.31 0 0144.69 44.69H64V83.31H44.69A19.31 19.31 0 0125.38 64z"/>
+          <path fill="#F24E1E" d="M25.38 25.38A19.31 19.31 0 0144.69 6.07H64v38.62H44.69A19.31 19.31 0 0125.38 25.38z"/>
+        </svg>
+        <span>Figma</span>
+      </div>
+    </div>
+ 
+    <!-- Center Card -->
+    <div class="orbit-center">
+      <span class="orbit-center-icon">⚡</span>
+      <span class="orbit-center-label">Full Stack<br>Dev</span>
+    </div>
+ 
   </div>
+</div>
 </section>
 
 <section id="about">
