@@ -89,34 +89,34 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .h-card-main{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:180px;height:180px;background:var(--surface);border-radius:28px;border:1.5px solid var(--border2);box-shadow:0 8px 40px rgba(37,99,235,0.15);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;z-index:5}
 .h-card-main .big-icon{font-size:3.2rem;line-height:1}
 .h-card-main .label{font-size:.72rem;font-weight:700;color:var(--blue);letter-spacing:.06em}
+
 .orbit-ring{position:absolute;top:50%;left:50%;border:1.5px dashed rgba(37,99,235,0.2);border-radius:50%;transform:translate(-50%,-50%)}
 .ring-1{width:270px;height:270px;animation:spin1 14s linear infinite}
 .ring-2{width:390px;height:390px;animation:spin1 22s linear infinite reverse}
-@keyframes spin1{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+@keyframes spin1{
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 .t-node{position:absolute;width:52px;height:52px;background:var(--surface);border-radius:13px;border:1.5px solid rgba(37,99,235,0.15);box-shadow:0 3px 12px rgba(37,99,235,0.1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:8.5px;font-weight:700;color:var(--blue)}
-/* ring 1 nodes - counter-rotate */
-.ring-1 .tn1{top:-26px;left:50%;transform:translateX(-50%);animation:cr1x 14s linear infinite reverse}
-.ring-1 .tn2{top:50%;right:-26px;transform:translateY(-50%);animation:cr1y 14s linear infinite reverse}
-.ring-1 .tn3{bottom:-26px;left:50%;transform:translateX(-50%);animation:cr1x 14s linear infinite reverse}
-.ring-1 .tn4{top:50%;left:-26px;transform:translateY(-50%);animation:cr1y 14s linear infinite reverse}
-@keyframes cr1x{from{transform:translateX(-50%) rotate(0)}to{transform:translateX(-50%) rotate(360deg)}}
-@keyframes cr1y{from{transform:translateY(-50%) rotate(0)}to{transform:translateY(-50%) rotate(360deg)}}
 
-/* ring 2 nodes - Diperbaiki agar menempel pas di garis putus-putus */
-.ring-2 .tn5{top:-26px;left:50%;transform:translateX(-50%);animation:cr1x 22s linear infinite}
-.ring-2 .tn6{top:50%;right:-26px;transform:translateY(-50%);animation:cr1y 22s linear infinite}
-.ring-2 .tn7{bottom:-26px;left:50%;transform:translateX(-50%);animation:cr1x 22s linear infinite}
-.ring-2 .tn8{top:50%;left:-26px;transform:translateY(-50%);animation:cr1y 22s linear infinite}
+/* Ring 1 Nodes (Counter-rotate backward) */
+.ring-1 .tn1{top:-26px;left:50%;margin-left:-26px;animation:counterSpin 14s linear infinite reverse}
+.ring-1 .tn2{top:50%;right:-26px;margin-top:-26px;animation:counterSpin 14s linear infinite reverse}
+.ring-1 .tn3{bottom:-26px;left:50%;margin-left:-26px;animation:counterSpin 14s linear infinite reverse}
+.ring-1 .tn4{top:50%;left:-26px;margin-top:-26px;animation:counterSpin 14s linear infinite reverse}
 
-/* floating chips - Diperbaiki agar tidak terpotong */
-.chip{position:absolute;background:var(--surface);border:1.5px solid rgba(37,99,235,0.2);border-radius:50px;padding:7px 14px;display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--ink);box-shadow:0 4px 16px rgba(37,99,235,0.1);white-space:nowrap;z-index:10}
-.chip-1{top:15px;right:-10px;animation:float-a 3.5s ease-in-out infinite}
-.chip-2{bottom:15px;left:-10px;animation:float-a 3.5s ease-in-out infinite 1.7s}
-.cdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.cdot.green{background:#10B981;animation:gd 1.5s ease-in-out infinite}
-.cdot.sky{background:var(--sky);animation:gd 1.5s ease-in-out infinite .5s}
-@keyframes gd{0%,100%{opacity:1}50%{opacity:.4}}
-@keyframes float-a{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+/* Ring 2 Nodes (Counter-rotate forward) */
+.ring-2 .tn5{top:-26px;left:50%;margin-left:-26px;animation:counterSpin 22s linear infinite}
+.ring-2 .tn6{top:50%;right:-26px;margin-top:-26px;animation:counterSpin 22s linear infinite}
+.ring-2 .tn7{bottom:-26px;left:50%;margin-left:-26px;animation:counterSpin 22s linear infinite}
+.ring-2 .tn8{top:50%;left:-26px;margin-top:-26px;animation:counterSpin 22s linear infinite}
+
+@keyframes counterSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
 /* ─── ABOUT ─── */
 #about{background:linear-gradient(to bottom,var(--bg),var(--bg2))}
@@ -379,12 +379,10 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
 
     <!-- RIGHT: Tech Orbit -->
     <div class="h-visual">
-      <!-- Floating chips -->
       <div class="chip chip-1"><span class="cdot green"></span>Open to Collaborate</div>
       <div class="chip chip-2"><span class="cdot sky"></span>Available for Internship</div>
 
       <div class="orbit-ring ring-1">
-        <div class="orbit-ring ring-1">
         <div class="t-node tn1">
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg" alt="Flutter" width="24" height="24" />
           <span>Flutter</span>
@@ -422,7 +420,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
         </div>
       </div>
 
-      <!-- Center -->
       <div class="h-card-main">
         <div class="big-icon">⚡</div>
         <div class="label">Full Stack Dev</div>
