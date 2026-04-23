@@ -118,6 +118,16 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
   to { transform: rotate(360deg); }
 }
 
+/* floating chips */
+.chip{position:absolute;background:var(--surface);border:1.5px solid rgba(37,99,235,0.2);border-radius:50px;padding:7px 14px;display:flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;color:var(--ink);box-shadow:0 4px 16px rgba(37,99,235,0.1);white-space:nowrap;z-index:10}
+.chip-1{top:15px;right:-10px;animation:float-a 3.5s ease-in-out infinite}
+.chip-2{bottom:15px;left:-10px;animation:float-a 3.5s ease-in-out infinite 1.7s}
+.cdot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.cdot.green{background:#10B981;animation:gd 1.5s ease-in-out infinite}
+.cdot.sky{background:var(--sky);animation:gd 1.5s ease-in-out infinite .5s}
+@keyframes gd{0%,100%{opacity:1}50%{opacity:.4}}
+@keyframes float-a{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
 /* ─── ABOUT ─── */
 #about{background:linear-gradient(to bottom,var(--bg),var(--bg2))}
 .ab-grid{display:grid;grid-template-columns:260px 1fr;gap:4rem;align-items:start;margin-top:3rem}
