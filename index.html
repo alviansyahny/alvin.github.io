@@ -101,10 +101,10 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: scale(0.88); /* UKURAN HP DIBESARKAN DI SINI */
+  transform: scale(0.88);
 }
 
-/* floating chips (Kembalikan Chips) */
+/* floating chips */
 .chip{position:absolute;background:var(--surface);border:1.5px solid rgba(37,99,235,0.2);border-radius:50px;padding:8px 16px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--ink);box-shadow:0 4px 16px rgba(37,99,235,0.1);white-space:nowrap;z-index:20}
 .chip-1{top:40px;right:-10px;animation:float-a 3.5s ease-in-out infinite}
 .chip-2{bottom:50px;left:-30px;animation:float-a 3.5s ease-in-out infinite 1.7s}
@@ -589,40 +589,95 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .e7 { --tx:-185px; --ty:10px;   --r1:-72deg; --tx2:-290px; --ty2:210px; --r2:-280deg; animation-delay:3.3s; }
 .e8 { --tx:175px;  --ty:30px;   --r1:85deg;  --tx2:275px;  --ty2:240px; --r2:310deg;  animation-delay:3.85s; }
 
-/* ─── ABOUT ─── */
-#about{background:linear-gradient(to bottom,var(--bg),var(--bg2))}
-.ab-grid{display:grid;grid-template-columns:260px 1fr;gap:4rem;align-items:start;margin-top:3rem}
+/* ─── ABOUT BENTO GRID ─── */
+#about{background:linear-gradient(to bottom,var(--bg),var(--bg2));position:relative;z-index:1;}
+.ab-grid{display:grid;grid-template-columns:260px 1fr;gap:3rem;align-items:start;margin-top:2rem}
+
+/* Left: Photo + Stats (Clean Premium Look) */
 .ab-img-side{position:relative;display:flex;flex-direction:column;align-items:center;gap:1rem}
-
-/* Spinning rainbow frame */
-.ab-photo-wrap{position:relative;width:220px;height:280px;display:flex;align-items:center;justify-content:center}
-.ab-rainbow-ring{position:absolute;inset:0;border-radius:24px;background:conic-gradient(#2563EB,#0EA5E9,#6366F1,#EC4899,#F59E0B,#10B981,#2563EB);animation:spin-rainbow 3s linear infinite;z-index:0}
-@keyframes spin-rainbow{to{transform:rotate(360deg)}}
-.ab-photo-inner{position:relative;z-index:1;width:212px;height:272px;border-radius:21px;background:linear-gradient(135deg,var(--bg3),#EFF6FF);border:4px solid var(--bg);overflow:hidden}
+.ab-photo-wrap{position:relative;width:220px;height:280px;display:flex;align-items:center;justify-content:center;border-radius:24px;background:linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.4));border:1px solid rgba(255,255,255,0.9);box-shadow: 0 20px 40px rgba(37,99,235,0.08);padding:6px;}
+.ab-photo-inner{position:relative;z-index:1;width:100%;height:100%;border-radius:18px;background:linear-gradient(135deg,var(--bg3),#EFF6FF);overflow:hidden;box-shadow: inset 0 4px 10px rgba(0,0,0,0.05);}
 .ab-photo-inner img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform .5s}
-.ab-photo-inner:hover img{transform:scale(1.04)}
+.ab-photo-wrap:hover .ab-photo-inner img{transform:scale(1.05)}
 
-/* Status & stats below photo */
-.ab-status-badge{display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:9px 14px;font-size:12px;font-weight:600;color:var(--ink);box-shadow:var(--shadow)}
-.ab-status-dot{width:8px;height:8px;border-radius:50%;background:#10B981;flex-shrink:0;animation:pulse-dot 2s infinite}
-.ab-stats-row{display:flex;gap:0;background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow);width:100%}
-.ab-stat-item{flex:1;padding:10px 14px;text-align:center}
+.ab-status-badge{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:12px;padding:10px 16px;font-size:0.75rem;font-weight:700;color:var(--ink);box-shadow:0 8px 20px rgba(37,99,235,0.05)}
+.ab-status-dot{width:8px;height:8px;border-radius:50%;background:#10B981;flex-shrink:0;animation:pulse-dot-status 2s infinite}
+@keyframes pulse-dot-status{0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,0.2)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+
+.ab-stats-row{display:flex;gap:0;background:rgba(255,255,255,0.8);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.9);border-radius:14px;overflow:hidden;box-shadow:0 8px 20px rgba(37,99,235,0.05);width:100%}
+.ab-stat-item{flex:1;padding:12px 10px;text-align:center}
 .ab-stat-item:not(:last-child){border-right:1px solid var(--border)}
-.ab-stat-n{font-family:'Space Grotesk',sans-serif;font-size:1.4rem;font-weight:700;color:var(--blue);line-height:1}
-.ab-stat-l{font-size:.68rem;color:var(--ink3);font-weight:600;margin-top:2px}
+.ab-stat-n{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;font-weight:700;color:var(--blue);line-height:1}
+.ab-stat-l{font-size:.65rem;color:var(--ink3);font-weight:700;margin-top:4px;letter-spacing:0.05em;text-transform:uppercase;}
 
-/* Right side */
-.ab-quote{font-size:1.15rem;font-weight:700;color:var(--ink);line-height:1.45;letter-spacing:-.01em;border-left:3px solid var(--blue);padding-left:14px;margin-bottom:1.2rem}
-.ab-bio{font-size:.95rem;color:var(--ink2);line-height:1.88;margin-bottom:1.6rem}
-.ab-bio strong{color:var(--ink);font-weight:700}
-.ab-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:1.6rem}
-.ab-chip{padding:6px 15px;border-radius:999px;font-size:.78rem;font-weight:600;background:rgba(37,99,235,0.08);color:var(--blue);border:1px solid rgba(37,99,235,0.18)}
-.ab-chip.sky{background:rgba(14,165,233,0.08);color:#0284C7;border-color:rgba(14,165,233,0.2)}
-.info-grid{display:flex;flex-direction:column;gap:10px}
-.info-row{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surface);border-radius:var(--r-sm);border:1px solid var(--border)}
-.info-ic{width:34px;height:34px;min-width:34px;border-radius:8px;background:rgba(37,99,235,0.08);display:flex;align-items:center;justify-content:center;font-size:.95rem}
-.info-l{font-size:.68rem;color:var(--ink3);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
-.info-v{font-size:.85rem;color:var(--ink);font-weight:600}
+/* Right: Bento Grid (Copywriting Premium) */
+.ab-bento-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 16px; }
+.bento-box {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 10px 40px rgba(37, 99, 235, 0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.bento-box:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(37, 99, 235, 0.1);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+/* Box 1: Intro */
+.bento-intro { grid-column: 1 / -1; }
+.bento-ic { font-size: 1.8rem; margin-bottom: 12px; }
+.bento-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+.bento-text { font-size: 0.95rem; color: var(--ink2); line-height: 1.8; }
+
+/* Box 2: Highlight Proyek */
+.bento-highlight {
+  background: linear-gradient(145deg, rgba(255,255,255,0.95), rgba(219,234,254,0.6));
+  border-color: rgba(14,165,233,0.3);
+}
+.bento-ic-wrap { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+.bento-badge { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em; background: linear-gradient(90deg, var(--blue), var(--sky)); color: #fff; padding: 5px 12px; border-radius: 999px; box-shadow: 0 4px 10px rgba(37,99,235,0.2);}
+.bento-title-sm {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.bento-text-sm { font-size: 0.88rem; color: var(--ink2); line-height: 1.7; flex: 1;}
+
+/* Box 3: Skills & Focus */
+.ab-chips{display:flex;flex-wrap:wrap;gap:8px; margin-top: auto;}
+.ab-chip{padding:6px 14px;border-radius:999px;font-size:.75rem;font-weight:600;background:rgba(37,99,235,0.06);color:var(--blue);border:1px solid rgba(37,99,235,0.15); transition: all 0.2s;}
+.ab-chip:hover{background:var(--blue);color:#fff;}
+.ab-chip.sky{background:rgba(14,165,233,0.06);color:#0284C7;border-color:rgba(14,165,233,0.15)}
+.ab-chip.sky:hover{background:var(--sky);color:#fff;}
+
+/* Box 4: Quick Info */
+.bento-info {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 28px;
+}
+.i-row { display: flex; align-items: center; gap: 10px; font-size: 0.9rem; font-weight: 600; color: var(--ink2); }
+.i-row span { font-size: 1.2rem; display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: rgba(37,99,235,0.08); border-radius: 8px; }
 
 /* ─── SKILLS ─── */
 #skills{background:var(--bg2)}
@@ -645,53 +700,85 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 
 /* ─── PROJECTS ─── */
 #projects{background:var(--bg)}
-.pf-row{display:flex;gap:7px;flex-wrap:wrap;margin:1.8rem 0}
-.pf-btn{padding:8px 18px;border-radius:999px;font-size:.78rem;font-weight:700;border:1.5px solid var(--border2);background:transparent;color:var(--ink2);cursor:pointer;transition:all .2s;letter-spacing:.01em}
-.pf-btn.active,.pf-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
-.pj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+.pf-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 3rem; }
+.pf-btn { padding: 8px 20px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(37,99,235,0.2); background: var(--surface); color: var(--ink2); cursor: pointer; transition: 0.2s; }
+.pf-btn.active, .pf-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
-/* Project card with glow border */
-.pj-card{background:var(--surface);border-radius:var(--r);overflow:hidden;transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column;position:relative;padding:2px}
-.pj-card::before{content:'';position:absolute;inset:0;border-radius:var(--r);background:radial-gradient(320px circle at var(--cx,-999px) var(--cy,-999px),rgba(37,99,235,0.7),rgba(99,102,241,0.5) 40%,transparent 65%);z-index:0;opacity:0;transition:opacity .35s}
-.pj-card:hover::before{opacity:1}
-.pj-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.pj-inner{background:var(--surface);border-radius:calc(var(--r) - 2px);overflow:hidden;flex:1;display:flex;flex-direction:column;position:relative;z-index:1}
+/* 🔥 HERO FEATURED PROJECT (FO-LEARN GOKIL) 🔥 */
+.feat-master {
+  position: relative;
+  background: linear-gradient(135deg, #040B16 0%, #0F2A5C 100%);
+  border-radius: 32px;
+  padding: 3rem 4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  box-shadow: 0 25px 50px rgba(11,29,58,0.2), inset 0 2px 0 rgba(255,255,255,0.1);
+  margin-top: 3rem; 
+  margin-bottom: 3rem;
+}
+.feat-master::before {
+  content: ''; position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
+  width: 400px; height: 400px; background: radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, transparent 70%);
+  filter: blur(40px); pointer-events: none; z-index: 0;
+}
+.fm-info { position: relative; z-index: 1; color: #fff; }
+.fm-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(14, 165, 233, 0.15); color: #38BDF8; padding: 6px 14px; border-radius: 999px; margin-bottom: 1.5rem; border: 1px solid rgba(14, 165, 233, 0.3); }
+.fm-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.1; }
+.fm-desc { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.5rem; }
+.fm-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+.fm-tag { font-size: 0.7rem; font-weight: 700; padding: 5px 14px; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
+.fm-link { display: inline-flex; align-items: center; gap: 8px; color: #38BDF8; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: 0.2s; }
+.fm-link:hover { color: #fff; transform: translateX(5px); }
 
-/* Phone mockup in project cards */
-.pj-thumb{width:100%;background:linear-gradient(135deg,var(--bg3),rgba(37,99,235,0.08));aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;gap:1.5rem;overflow:hidden;position:relative;padding:1.2rem 1rem .8rem}
-.pj-thumb.web-thumb{align-items:flex-start;padding-top:1.5rem}
-.phone-mock{width:80px;flex-shrink:0;filter:drop-shadow(0 8px 20px rgba(37,99,235,0.2));position:relative}
-.phone-mock.lg{width:100px}
-.phone-frame{border:2.5px solid rgba(37,99,235,0.25);border-radius:14px;background:#fff;overflow:hidden;aspect-ratio:9/19;position:relative}
-.phone-notch{width:30px;height:5px;background:rgba(37,99,235,0.2);border-radius:99px;margin:5px auto 3px;position:relative;z-index:2}
-.phone-screen{width:100%;flex:1;background:linear-gradient(160deg,#EFF6FF,#DBEAFE);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:var(--blue);font-weight:700;letter-spacing:.05em;min-height:60px}
-.phone-screen img{width:100%;height:100%;object-fit:cover}
-.browser-mock{border:2px solid rgba(37,99,235,0.2);border-radius:10px;background:#fff;overflow:hidden;flex:1;max-width:220px}
-.browser-bar{background:var(--bg3);padding:5px 8px;display:flex;align-items:center;gap:5px;border-bottom:1px solid rgba(37,99,235,0.1)}
-.b-dot{width:6px;height:6px;border-radius:50%}
-.browser-screen{background:linear-gradient(160deg,#EFF6FF,#DBEAFE);height:100px;display:flex;align-items:center;justify-content:center;font-size:.6rem;color:var(--blue);font-weight:700}
-.browser-screen img{width:100%;height:100%;object-fit:cover}
-.pj-bdg{position:absolute;top:10px;left:10px;padding:4px 11px;border-radius:999px;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;z-index:2}
-.bdg-mob{background:#EFF6FF;color:#1D4ED8}
-.bdg-ui{background:#FEF9EE;color:#92400E}
-.bdg-web{background:#ECFDF5;color:#065F46}
-.bdg-dsk{background:#F5F3FF;color:#5B21B6}
-.pj-body{padding:1.4rem;flex:1;display:flex;flex-direction:column}
-.pj-type{font-size:.67rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem}
-.pj-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:-0.01em;margin-bottom:.5rem;color:var(--ink)}
-.pj-desc{font-size:.84rem;color:var(--ink2);line-height:1.75;flex:1;margin-bottom:1rem}
-.pj-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:1rem}
-.ptag{font-size:.66rem;font-weight:600;padding:3px 10px;border-radius:999px;background:rgba(37,99,235,0.07);color:var(--blue);border:1px solid rgba(37,99,235,0.15)}
-.pj-links{display:flex;gap:1rem;margin-top:auto}
-.plink{font-size:.8rem;font-weight:600;color:var(--ink2);text-decoration:none;display:flex;align-items:center;gap:5px;transition:color .2s}
-.plink:hover{color:var(--blue)}
+/* VISUAL KANAN (3D HP KELUAR BATAS) */
+.fm-visual {
+  position: relative;
+  height: 480px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1200px;
+  z-index: 5;
+  cursor: pointer;
+}
+.fm-phone {
+  position: absolute;
+  width: 220px; 
+  height: 470px;
+  background: #000;
+  border-radius: 36px;
+  border: 3px solid #334155;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.2);
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.fm-screen { width: 100%; height: 100%; background: #0B1D3A; position: relative; }
+.fm-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.fm-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 70px; height: 20px; background: #000; border-radius: 99px; z-index: 10; }
 
-/* Featured card */
-.pj-card.feat{grid-column:1/-1}
-.pj-card.feat .pj-inner{display:grid;grid-template-columns:1.1fr 1fr}
-.pj-card.feat .pj-thumb{aspect-ratio:unset;min-height:280px}
-.pj-card.feat .pj-body{justify-content:center;padding:2rem}
-.feat-badge{display:inline-flex;align-items:center;gap:6px;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;background:rgba(37,99,235,0.08);color:var(--blue);border:1px solid rgba(37,99,235,0.2);padding:4px 12px;border-radius:999px;margin-bottom:.75rem}
+.hp-left { transform: translateX(-40px) translateZ(-80px) rotateY(15deg) scale(0.85); opacity: 0.7; z-index: 1; border-color: #1e293b; }
+.hp-center { transform: translateZ(20px) scale(1.05); opacity: 1; z-index: 3; box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 2px rgba(56, 189, 248, 0.5); border-color: #0f172a; }
+.hp-right { transform: translateX(40px) translateZ(-80px) rotateY(-15deg) scale(0.85); opacity: 0.7; z-index: 2; border-color: #1e293b; }
+
+.fm-visual:hover .hp-left { transform: translateX(-140px) translateZ(0) rotateY(-5deg) scale(0.95); opacity: 1; z-index: 3; }
+.fm-visual:hover .hp-center { transform: translateY(-20px) translateZ(50px) scale(1.1); box-shadow: 0 50px 100px rgba(0,0,0,0.7), 0 0 0 3px rgba(56, 189, 248, 0.8); }
+.fm-visual:hover .hp-right { transform: translateX(140px) translateZ(0) rotateY(5deg) scale(0.95); opacity: 1; z-index: 3; }
+
+/* Grid Project Lainnya (Normal) */
+.pj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+.pj-card { background: var(--surface); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(37,99,235,0.05); border: 1px solid rgba(37,99,235,0.1); transition: 0.3s; display: flex; flex-direction: column; }
+.pj-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(37,99,235,0.1); border-color: rgba(37,99,235,0.3); }
+.pj-thumb { width: 100%; height: 220px; background: linear-gradient(135deg, var(--bg3), var(--bg)); display: flex; align-items: center; justify-content: center; position: relative; padding: 1.5rem; }
+.pj-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.pj-type { font-size: 0.65rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.pj-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.pj-desc { font-size: 0.85rem; color: var(--ink2); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
+
+.b-mock { width: 100%; max-width: 250px; height: 140px; background: #fff; border-radius: 8px; border: 2px solid rgba(37,99,235,0.2); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+.b-mock-bar { height: 20px; background: #DBEAFE; display: flex; align-items: center; gap: 4px; padding: 0 8px; border-bottom: 1px solid rgba(37,99,235,0.1); }
+.b-mock-dot { width: 6px; height: 6px; border-radius: 50%; background: #CBD5E1; }
 
 /* ─── ACHIEVEMENTS ─── */
 #achievements{background:var(--bg2)}
@@ -769,10 +856,15 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
 @media(max-width:960px){
   .h-inner{grid-template-columns:1fr}
   .h-visual{display:none}
-  .pj-card.feat .pj-inner{grid-template-columns:1fr}
-  .pj-card.feat .pj-thumb{min-height:200px}
+  .feat-master { grid-template-columns: 1fr; padding: 2rem; }
+  .fm-visual { height: 400px; margin-top: 2rem; }
+  .fm-phone { width: 180px; height: 380px; }
   .nav-links{display:none}
   .ab-grid{grid-template-columns:1fr;gap:2rem}
+}
+@media(max-width:768px){
+  .ab-bento-grid { grid-template-columns: 1fr; }
+  .bento-intro, .bento-highlight, .bento-skills, .bento-info { grid-column: 1; }
 }
 @media(max-width:600px){
   section{padding:5rem 1.25rem}
@@ -978,7 +1070,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
 
       <div class="ab-img-side reveal">
         <div class="ab-photo-wrap">
-          <div class="ab-rainbow-ring"></div>
           <div class="ab-photo-inner">
             <img src="assets/foto-profil-alvin.jpg" alt="Alviansyah" onerror="this.style.background='linear-gradient(135deg,#DBEAFE,#EFF6FF)'">
           </div>
@@ -1003,25 +1094,40 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
         </div>
       </div>
 
-      <div class="reveal d1">
-        <p class="ab-quote">"Saya bikin aplikasi Flutter —<br>sekaligus yang mendesainnya."</p>
-        <p class="ab-bio">
-          Hei! Saya <strong>Alvian</strong> — Flutter developer yang nggak bisa berhenti mikirin kenapa sebuah app harus terasa enak dipakai, bukan cuma bisa dipakai.<br><br>
-          Jadi saya buktiin sendiri — <strong>3 bulan membangun Fo-Learn secara mandiri</strong>, dari arsitektur Flutter, desain UI-nya di Figma, sampai integrasi payment gateway. Semuanya, sendirian, dari semester 3.<br><br>
-          Web frontend & UI/UX juga bisa, kalau proyeknya butuh.
-        </p>
-        <div class="ab-chips">
-          <span class="ab-chip">Flutter & Dart</span>
-          <span class="ab-chip">Frontend Web</span>
-          <span class="ab-chip sky">UI/UX · Figma</span>
-          <span class="ab-chip sky">Firebase</span>
+      <div class="ab-bento-grid reveal d1">
+        
+        <div class="bento-box bento-intro">
+            <div class="bento-ic">👋</div>
+            <h3 class="bento-title">Hei! Saya Alvian.</h3>
+            <p class="bento-text">Sebagai Mobile & Frontend Developer, saya percaya aplikasi hebat bukan cuma soal kode yang berjalan tanpa <em>error</em>, tapi pengalaman yang mulus bagi pengguna. Dengan pemahaman kuat di bidang <strong style="color:var(--blue)">UI/UX Design</strong>, saya memastikan setiap produk yang saya bangun tidak hanya berfungsi secara optimal, tapi juga memanjakan mata.</p>
         </div>
-        <div class="info-grid">
-          <div class="info-row"><div class="info-ic">🎓</div><div><div class="info-l">Pendidikan</div><div class="info-v">D4 TI — Politeknik Negeri Jember</div></div></div>
-          <div class="info-row"><div class="info-ic">📍</div><div><div class="info-l">Lokasi</div><div class="info-v">Jember · Open to Remote</div></div></div>
-          <div class="info-row"><div class="info-ic">✉️</div><div><div class="info-l">Email</div><div class="info-v" style="font-size:.75rem">nurhidayatalviansyah@gmail.com</div></div></div>
-          <div class="info-row"><div class="info-ic">💼</div><div><div class="info-l">Status</div><div class="info-v">Open · Internship & Freelance</div></div></div>
+
+        <div class="bento-box bento-highlight">
+            <div class="bento-ic-wrap">
+                <div class="bento-ic">🚀</div>
+                <span class="bento-badge">End-to-End Project</span>
+            </div>
+            <h4 class="bento-title-sm">Membangun Fo-Learn</h4>
+            <p class="bento-text-sm">Mengeksekusi siklus pengembangan aplikasi edukasi dari nol secara mandiri. Mulai dari merancang arsitektur Flutter, <em>prototyping</em> antarmuka di Figma, hingga integrasi <em>backend</em> Firebase dan <em>payment gateway</em>.</p>
         </div>
+
+        <div class="bento-box bento-skills">
+            <div class="bento-ic">💡</div>
+            <h4 class="bento-title-sm">Fokus Utama</h4>
+            <div class="ab-chips">
+              <span class="ab-chip">Flutter & Dart</span>
+              <span class="ab-chip">Frontend Web</span>
+              <span class="ab-chip sky">UI/UX Design</span>
+              <span class="ab-chip sky">Firebase</span>
+            </div>
+        </div>
+
+        <div class="bento-box bento-info">
+             <div class="i-row"><span>🎓</span> D4 TI - Polije</div>
+             <div class="i-row"><span>📍</span> Jember, ID</div>
+             <div class="i-row"><span>💼</span> Open to Remote</div>
+        </div>
+
       </div>
 
     </div>
@@ -1044,116 +1150,106 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
 
 <section id="projects" style="background:var(--bg2)">
   <div class="container">
-    <div class="reveal"><span class="stag">Projects</span><h2 class="title">Proyek Saya</h2><p class="sub">Proyek yang telah saya bangun — mobile app, desain UI/UX, hingga aplikasi desktop.</p></div>
+    <div class="reveal">
+      <span class="stag">Projects</span>
+      <h2 class="title">Proyek Saya</h2>
+      <p class="sub">Karya terbaik yang telah saya bangun — mulai dari mobile app, desain UI/UX, hingga aplikasi desktop.</p>
+    </div>
+
     <div class="pf-row reveal">
       <button class="pf-btn active" data-f="all">Semua</button>
       <button class="pf-btn" data-f="mobile">Mobile</button>
       <button class="pf-btn" data-f="uiux">UI/UX</button>
       <button class="pf-btn" data-f="desktop">Desktop</button>
     </div>
+
+    <div class="feat-master reveal">
+      
+      <div class="fm-info">
+        <div class="fm-badge">⭐ Featured Project</div>
+        <h3 class="fm-title">Fo-learn<br>(Focus Learning)</h3>
+        <p class="fm-desc">Aplikasi mobile edukasi super mulus untuk persiapan UTBK. Dilengkapi fitur <em>Flash Learning</em> ala TikTok, simulasi TryOut, analitik performa, dan sistem premium terintegrasi <em>payment gateway</em>.</p>
+        
+        <div class="fm-tags">
+          <span class="fm-tag">Flutter</span>
+          <span class="fm-tag">Dart</span>
+          <span class="fm-tag">Firebase</span>
+          <span class="fm-tag">Payment Gateway</span>
+        </div>
+
+        <a href="https://github.com/alviansyahny/fo-learn" target="_blank" class="fm-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          Lihat Source Code di GitHub
+        </a>
+      </div>
+
+      <div class="fm-visual">
+        
+        <div class="fm-phone hp-left">
+          <div class="fm-notch"></div>
+          <div class="fm-screen" style="background: linear-gradient(160deg, #1E3A5F, #3B82F6);">
+            <img src="assets/screenshot-folearn-2.png" alt="Flash Learning Screen">
+          </div>
+        </div>
+
+        <div class="fm-phone hp-center">
+          <div class="fm-notch"></div>
+          <div class="fm-screen" style="background: linear-gradient(160deg, #1E3A5F, #2563EB);">
+            <img src="assets/screenshot-folearn-1.png" alt="Splash Screen">
+          </div>
+        </div>
+
+        <div class="fm-phone hp-right">
+          <div class="fm-notch"></div>
+          <div class="fm-screen" style="background: linear-gradient(160deg, #1E3A5F, #60A5FA);">
+            <img src="assets/screenshot-folearn-3.png" alt="TryOut Screen">
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
     <div class="pj-grid">
-
-      <div class="pj-card feat reveal glow-card" data-c="mobile">
-        <div class="pj-inner">
-          <div class="pj-thumb">
-            <div class="phone-mock lg" style="transform:rotate(-5deg) translateY(-8px)">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <div class="phone-screen" style="background:linear-gradient(160deg,#1E3A5F,#2563EB)">
-                  <img src="assets/screenshot-folearn-1.png" alt="Fo-Learn Screen 1" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#93C5FD;font-size:.55rem;font-weight:700>Fo-Learn</span>'">
-                </div>
-              </div>
+      
+      <div class="pj-card reveal d1">
+        <div class="pj-thumb">
+          <div class="b-mock">
+            <div class="b-mock-bar">
+              <span class="b-mock-dot" style="background:#FF5F57"></span><span class="b-mock-dot" style="background:#FEBC2E"></span><span class="b-mock-dot" style="background:#28C840"></span>
             </div>
-            <div class="phone-mock" style="transform:rotate(4deg) translateY(8px)">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <div class="phone-screen" style="background:linear-gradient(160deg,#1E3A5F,#3B82F6)">
-                  <img src="assets/screenshot-folearn-2.png" alt="Fo-Learn Screen 2" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#BFDBFE;font-size:.55rem;font-weight:700>Flash<br>Learning</span>'">
-                </div>
-              </div>
-            </div>
-            <div class="phone-mock" style="transform:rotate(-2deg) translateY(-4px)">
-              <div class="phone-frame">
-                <div class="phone-notch"></div>
-                <div class="phone-screen" style="background:linear-gradient(160deg,#1E3A5F,#60A5FA)">
-                  <img src="assets/screenshot-folearn-3.png" alt="Fo-Learn Screen 3" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#DBEAFE;font-size:.55rem;font-weight:700>TryOut</span>'">
-                </div>
-              </div>
-            </div>
-            <span class="pj-bdg bdg-mob">Mobile App</span>
-          </div>
-          <div class="pj-body">
-            <span class="feat-badge">⭐ Featured Project</span>
-            <div class="pj-type">Flutter · Firebase · Proyek Pribadi</div>
-            <h3 class="pj-title">Fo-learn (Focus Learning)</h3>
-            <p class="pj-desc">Aplikasi mobile edukasi modern untuk persiapan UTBK/SNBT. Fitur Flash Learning (short video ala TikTok), simulasi TryOut, dashboard performa, dan sistem premium dengan payment gateway.</p>
-            <div class="pj-tags"><span class="ptag">Flutter</span><span class="ptag">Dart</span><span class="ptag">Firebase</span><span class="ptag">Payment Gateway</span></div>
-            <div class="pj-links">
-              <a href="https://github.com/alviansyahny/fo-learn" target="_blank" class="plink">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                GitHub Repo
-              </a>
+            <div style="height:100%; display:flex; align-items:center; justify-content:center; background: #EFF6FF; overflow: hidden;">
+                <img src="assets/mockup-habitutor.jpeg" alt="Habitutor Mockup" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:var(--blue); font-weight:700; font-size:0.8rem;\'>Habitutor Mockup</span>'">
             </div>
           </div>
         </div>
-      </div>
-
-      <div class="pj-card reveal d1 glow-card" data-c="uiux">
-        <div class="pj-inner">
-          <div class="pj-thumb web-thumb">
-            <div class="browser-mock">
-              <div class="browser-bar">
-                <span class="b-dot" style="background:#FF5F57"></span>
-                <span class="b-dot" style="background:#FEBC2E"></span>
-                <span class="b-dot" style="background:#28C840"></span>
-              </div>
-              <div class="browser-screen" style="background:linear-gradient(160deg,#EFF6FF,#DBEAFE)">
-                <img src="mockup-habitutor.jpeg" alt="Habitutor" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:var(--blue);font-size:.65rem;font-weight:700>Habitutor<br>Landing Page</span>'">
-              </div>
-            </div>
-            <span class="pj-bdg bdg-ui">UI/UX</span>
-          </div>
-          <div class="pj-body">
-            <div class="pj-type">Figma · Web Design</div>
-            <h3 class="pj-title">Landing Page Habitutor</h3>
-            <p class="pj-desc">Desain UI/UX lengkap untuk platform bimbel online — Landing Page, Register, dan Login. Modern, clean, dan conversion-focused.</p>
-            <div class="pj-tags"><span class="ptag">Figma</span><span class="ptag">UI Design</span><span class="ptag">Prototyping</span></div>
-            <div class="pj-links">
-              <a href="https://www.figma.com/design/5CEDK2IHCUpnHkYHOLtFdo/Landing-Page-Habitutor?node-id=0-1" target="_blank" class="plink">
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                Lihat di Figma
-              </a>
-            </div>
-          </div>
+        <div class="pj-body">
+          <div class="pj-type">UI/UX · Figma</div>
+          <h3 class="pj-title">Landing Page Habitutor</h3>
+          <p class="pj-desc">Desain antarmuka lengkap untuk platform bimbel online. Fokus pada konversi pengguna dan estetika modern.</p>
         </div>
       </div>
 
-      <div class="pj-card reveal d2 glow-card" data-c="desktop">
-        <div class="pj-inner">
-          <div class="pj-thumb web-thumb">
-            <div class="browser-mock">
-              <div class="browser-bar">
-                <span class="b-dot" style="background:#FF5F57"></span>
-                <span class="b-dot" style="background:#FEBC2E"></span>
-                <span class="b-dot" style="background:#28C840"></span>
-              </div>
-              <div class="browser-screen" style="background:linear-gradient(160deg,#F5F3FF,#EDE9FE)">
-                <img src="mockup-kasir.jpg" alt="Kasir App" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=color:#5B21B6;font-size:.65rem;font-weight:700>Aplikasi Kasir<br>Desktop</span>'">
-              </div>
+      <div class="pj-card reveal d2">
+        <div class="pj-thumb">
+          <div class="b-mock">
+            <div class="b-mock-bar">
+              <span class="b-mock-dot" style="background:#FF5F57"></span><span class="b-mock-dot" style="background:#FEBC2E"></span><span class="b-mock-dot" style="background:#28C840"></span>
             </div>
-            <span class="pj-bdg bdg-dsk">Desktop</span>
+            <div style="height:100%; display:flex; align-items:center; justify-content:center; background: #F5F3FF; overflow: hidden;">
+                 <img src="assets/mockup-kasir.jpg" alt="Kasir App Mockup" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:#5B21B6; font-weight:700; font-size:0.8rem;\'>Kasir App Mockup</span>'">
+            </div>
           </div>
-          <div class="pj-body">
-            <div class="pj-type">Figma · Java · Tim</div>
-            <h3 class="pj-title">Aplikasi Kasir Desktop</h3>
-            <p class="pj-desc">UI/UX Designer dalam tim — desain antarmuka kasir berbasis Java. Juara 3 EPIM-TI 2025. Flow transaksi yang intuitif untuk kebutuhan bisnis.</p>
-            <div class="pj-tags"><span class="ptag">Figma</span><span class="ptag">Java</span><span class="ptag">UI Design</span><span class="ptag">Tim</span></div>
-            <div class="pj-links"><span class="plink" style="color:var(--blue);pointer-events:none;font-size:.78rem">🏆 Juara 3 EPIM-TI 2025</span></div>
-          </div>
+        </div>
+        <div class="pj-body">
+          <div class="pj-type">Desktop · Java · Figma</div>
+          <h3 class="pj-title">Aplikasi Kasir Desktop</h3>
+          <p class="pj-desc">Juara 3 EPIM-TI 2025. Perancangan UI/UX flow transaksi yang intuitif berbasis Java.</p>
         </div>
       </div>
 
     </div>
+
   </div>
 </section>
 
@@ -1290,8 +1386,10 @@ document.querySelectorAll('.pf-btn').forEach(btn=>{
     document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     const f=btn.dataset.f;
-    document.querySelectorAll('.pj-card').forEach(c=>{
-      const show=(f==='all'||c.dataset.c===f);
+    document.querySelectorAll('.pj-card, .feat-master').forEach(c=>{
+      // Periksa dataset "c" pada pj-card atau data-c pada feat-master 
+      const category = c.dataset.c || 'mobile'; // feat-master punya data-c="mobile"
+      const show=(f==='all'||category===f);
       c.style.display=show?'':'none';
     });
   });
