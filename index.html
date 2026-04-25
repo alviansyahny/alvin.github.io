@@ -704,69 +704,55 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .pf-btn { padding: 8px 20px; border-radius: 999px; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(37,99,235,0.2); background: var(--surface); color: var(--ink2); cursor: pointer; transition: 0.2s; }
 .pf-btn.active, .pf-btn:hover { background: var(--blue); color: #fff; border-color: var(--blue); }
 
-/* 🔥 HERO FEATURED PROJECT (FO-LEARN GOKIL) 🔥 */
-.feat-master {
-  position: relative;
-  background: linear-gradient(135deg, #040B16 0%, #0F2A5C 100%);
-  border-radius: 32px;
-  padding: 3rem 4rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 2rem;
-  box-shadow: 0 25px 50px rgba(11,29,58,0.2), inset 0 2px 0 rgba(255,255,255,0.1);
-  margin-top: 3rem; 
-  margin-bottom: 3rem;
-}
-.feat-master::before {
-  content: ''; position: absolute; right: 10%; top: 50%; transform: translateY(-50%);
-  width: 400px; height: 400px; background: radial-gradient(circle, rgba(14, 165, 233, 0.4) 0%, transparent 70%);
-  filter: blur(40px); pointer-events: none; z-index: 0;
-}
-.fm-info { position: relative; z-index: 1; color: #fff; }
-.fm-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(14, 165, 233, 0.15); color: #38BDF8; padding: 6px 14px; border-radius: 999px; margin-bottom: 1.5rem; border: 1px solid rgba(14, 165, 233, 0.3); }
-.fm-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.1; }
-.fm-desc { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.5rem; }
-.fm-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2.5rem; }
+/* 🔥 HERO FEATURED PROJECT 🔥 */
+.proj-hero { background: linear-gradient(135deg, #040B16 0%, #0F2A5C 100%); border-radius: 32px; overflow: hidden; box-shadow: 0 25px 50px rgba(11,29,58,0.2), inset 0 2px 0 rgba(255,255,255,0.1); margin-top: 3rem; margin-bottom: 3rem; border: 1px solid rgba(255,255,255,0.05); position: relative; }
+.proj-hero-top { display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; min-height: 400px; }
+
+/* Left info panel */
+.proj-info { padding: 3rem 4rem; display: flex; flex-direction: column; z-index: 2; }
+.proj-status-row { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; }
+.fm-badge { display: inline-flex; align-items: center; gap: 8px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(14, 165, 233, 0.15); color: #38BDF8; padding: 6px 14px; border-radius: 999px; border: 1px solid rgba(14, 165, 233, 0.3); }
+.fm-badge.green { background: rgba(16,185,129,0.15); color: #34D399; border-color: rgba(16,185,129,0.3); }
+
+.proj-name { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2rem, 3vw, 2.5rem); font-weight: 700; color: #fff; margin-bottom: 0.2rem; line-height: 1.1; }
+.proj-tagline { font-size: 0.85rem; color: #93C5FD; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 1.2rem; text-transform: uppercase; }
+.proj-desc { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 1.8rem; flex: 1; }
+
+.fm-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 2rem; }
 .fm-tag { font-size: 0.7rem; font-weight: 700; padding: 5px 14px; border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.15); }
-.fm-link { display: inline-flex; align-items: center; gap: 8px; color: #38BDF8; font-weight: 700; font-size: 0.9rem; text-decoration: none; transition: 0.2s; }
-.fm-link:hover { color: #fff; transform: translateX(5px); }
 
-/* VISUAL KANAN (3D HP KELUAR BATAS) */
-.fm-visual {
-  position: relative;
-  height: 480px; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  perspective: 1200px;
-  z-index: 5;
-  cursor: pointer;
-}
-.fm-phone {
-  position: absolute;
-  width: 220px; 
-  height: 470px;
-  background: #000;
-  border-radius: 36px;
-  border: 3px solid #334155;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.5), inset 0 0 10px rgba(255,255,255,0.2);
-  overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-.fm-screen { width: 100%; height: 100%; background: #0B1D3A; position: relative; }
-.fm-screen img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.fm-notch { position: absolute; top: 10px; left: 50%; transform: translateX(-50%); width: 70px; height: 20px; background: #000; border-radius: 99px; z-index: 10; }
+.proj-actions { display: flex; gap: 12px; align-items: center; }
+.btn-primary-sm { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #fff; font-size: 0.85rem; font-weight: 600; padding: 10px 20px; border-radius: 10px; cursor: pointer; transition: all 0.2s; text-decoration: none; border: none; box-shadow: 0 4px 15px rgba(37,99,235,0.3); font-family: 'Outfit', sans-serif;}
+.btn-primary-sm:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(37,99,235,0.4); }
+.btn-ghost-sm { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: rgba(255,255,255,0.8); font-size: 0.85rem; font-weight: 600; padding: 10px 16px; border-radius: 10px; border: 1.5px solid rgba(255,255,255,0.2); cursor: pointer; transition: all 0.2s; text-decoration: none; }
+.btn-ghost-sm:hover { color: #fff; border-color: var(--blue); background: rgba(37,99,235,0.1); }
 
-.hp-left { transform: translateX(-40px) translateZ(-80px) rotateY(15deg) scale(0.85); opacity: 0.7; z-index: 1; border-color: #1e293b; }
-.hp-center { transform: translateZ(20px) scale(1.05); opacity: 1; z-index: 3; box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 0 2px rgba(56, 189, 248, 0.5); border-color: #0f172a; }
-.hp-right { transform: translateX(40px) translateZ(-80px) rotateY(-15deg) scale(0.85); opacity: 0.7; z-index: 2; border-color: #1e293b; }
+/* Right Visual Area */
+.proj-visual { position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; min-height: 380px; }
+.proj-visual::before { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, transparent 70%); pointer-events: none; }
 
-.fm-visual:hover .hp-left { transform: translateX(-140px) translateZ(0) rotateY(-5deg) scale(0.95); opacity: 1; z-index: 3; }
-.fm-visual:hover .hp-center { transform: translateY(-20px) translateZ(50px) scale(1.1); box-shadow: 0 50px 100px rgba(0,0,0,0.7), 0 0 0 3px rgba(56, 189, 248, 0.8); }
-.fm-visual:hover .hp-right { transform: translateX(140px) translateZ(0) rotateY(5deg) scale(0.95); opacity: 1; z-index: 3; }
+.phone-stage { position: relative; width: 300px; height: 340px; perspective: 1200px; z-index: 5; }
+.phone { position: absolute; width: 140px; height: 290px; border-radius: 22px; border: 1.5px solid rgba(255,255,255,0.12); overflow: hidden; transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+.phone-screen { width: 100%; height: 100%; display: flex; flex-direction: column; padding: 14px 10px 10px; gap: 6px; position: relative; }
+.phone-notch { position: absolute; top: 8px; left: 50%; transform: translateX(-50%); width: 40px; height: 10px; background: #000; border-radius: 99px; z-index: 5; }
 
-/* Grid Project Lainnya (Normal) */
+.phone-l { top: 30px; left: -20px; transform: rotateY(15deg) translateZ(-40px) scale(0.85); opacity: 0.6; z-index: 1; }
+.phone-c { top: 0; left: 50%; transform: translateX(-50%) translateZ(0) scale(1.05); opacity: 1; z-index: 3; border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 30px 60px rgba(0,0,0,0.6), 0 0 0 2px rgba(56, 189, 248, 0.3); }
+.phone-r { top: 30px; right: -20px; transform: rotateY(-15deg) translateZ(-40px) scale(0.85); opacity: 0.6; z-index: 2; }
+
+.proj-visual:hover .phone-l { transform: rotateY(0) translateX(-40px) scale(0.95); opacity: 0.9; }
+.proj-visual:hover .phone-c { transform: translateX(-50%) translateY(-15px) translateZ(30px) scale(1.15); }
+.proj-visual:hover .phone-r { transform: rotateY(0) translateX(40px) scale(0.95); opacity: 0.9; }
+
+/* Metrics bar */
+.proj-metrics { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.2); }
+.metric-item { padding: 1.5rem 2rem; border-right: 1px solid rgba(255,255,255,0.08); text-align: center; }
+.metric-item:last-child { border-right: none; }
+.metric-val { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 6px; }
+.metric-val span { font-size: 0.9rem; color: #93C5FD; }
+.metric-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* Grid Normal Projects */
 .pj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
 .pj-card { background: var(--surface); border-radius: 20px; overflow: hidden; box-shadow: 0 4px 20px rgba(37,99,235,0.05); border: 1px solid rgba(37,99,235,0.1); transition: 0.3s; display: flex; flex-direction: column; }
 .pj-card:hover { transform: translateY(-6px); box-shadow: 0 15px 40px rgba(37,99,235,0.1); border-color: rgba(37,99,235,0.3); }
@@ -775,12 +761,45 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .pj-type { font-size: 0.65rem; font-weight: 800; color: var(--blue); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
 .pj-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
 .pj-desc { font-size: 0.85rem; color: var(--ink2); line-height: 1.7; flex: 1; margin-bottom: 1rem; }
-
 .b-mock { width: 100%; max-width: 250px; height: 140px; background: #fff; border-radius: 8px; border: 2px solid rgba(37,99,235,0.2); overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
 .b-mock-bar { height: 20px; background: #DBEAFE; display: flex; align-items: center; gap: 4px; padding: 0 8px; border-bottom: 1px solid rgba(37,99,235,0.1); }
 .b-mock-dot { width: 6px; height: 6px; border-radius: 50%; background: #CBD5E1; }
 
-/* ─── ACHIEVEMENTS ─── */
+/* ─── MODAL CSS ─── */
+.modal-bg { position: fixed; inset: 0; background: rgba(11,29,58,0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 9999; display: flex; justify-content: center; align-items: flex-start; padding: 40px 20px; overflow-y: auto; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+.modal-bg.open { opacity: 1; pointer-events: auto; }
+.modal { background: var(--surface); width: 100%; max-width: 820px; border-radius: 24px; border: 1px solid var(--border); overflow: hidden; transform: translateY(24px) scale(0.98); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); margin: auto; box-shadow: var(--shadow-lg); }
+.modal-bg.open .modal { transform: translateY(0) scale(1); }
+
+.modal-banner { background: linear-gradient(135deg, #040B16 0%, #0F2A5C 100%); padding: 3rem 4rem; position: relative; overflow: hidden; color: #fff; }
+.modal-close { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: #fff; font-size: 16px; transition: all 0.2s; z-index: 10; }
+.modal-close:hover { background: var(--blue); border-color: var(--blue); transform: scale(1.05); }
+
+.modal-proj-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; margin-bottom: 1rem; line-height: 1.1; }
+.modal-proj-sub { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.7; max-width: 520px; margin-bottom: 2rem; }
+.modal-meta-row { display: flex; gap: 2rem; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; }
+.modal-meta-key { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #93C5FD; margin-bottom: 4px; }
+.modal-meta-val { font-size: 0.9rem; font-weight: 600; color: #fff; }
+
+.modal-body { padding: 3rem 4rem; color: var(--ink2); }
+.cs-block { margin-bottom: 2.5rem; }
+.cs-h { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--ink); margin-bottom: 1rem; display: flex; align-items: center; gap: 10px; }
+.cs-h-num { font-size: 0.75rem; color: var(--blue); font-weight: 800; padding: 4px 10px; background: var(--accent-glow); border-radius: 8px; }
+.cs-p { margin-bottom: 1rem; line-height: 1.8; }
+
+.outcome-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.outcome-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 1.2rem; text-align: center; }
+.outcome-num { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: var(--blue); line-height: 1; margin-bottom: 0.5rem; }
+.outcome-desc { font-size: 0.8rem; font-weight: 600; color: var(--ink2); }
+
+.tech-item { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--blue); border-radius: 0 12px 12px 0; padding: 1.2rem; margin-bottom: 1rem; box-shadow: var(--shadow); }
+.tech-item-title { font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; font-size: 0.95rem; }
+
+.modal-footer { padding: 1.5rem 4rem; border-top: 1px solid var(--border); background: var(--bg); display: flex; gap: 1rem; }
+.btn-s{background:transparent;color:var(--ink);padding:10px 24px;border-radius:10px;font-weight:600;font-size:0.88rem;border:1.5px solid var(--border);cursor:pointer;transition:all .2s;font-family:'Outfit',sans-serif;}
+.btn-s:hover{border-color:var(--blue);color:var(--blue);background:rgba(37,99,235,0.05)}
+
+/* ─── ACHIEVEMENTS & OTHERS ─── */
 #achievements{background:var(--bg2)}
 .ac-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem;margin-top:3rem}
 .ac-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;position:relative;overflow:hidden;transition:all .2s}
@@ -791,7 +810,6 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .ac-ev{font-size:.78rem;color:var(--ink2);margin-bottom:.7rem}
 .ac-tag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:4px 12px;border-radius:999px;background:rgba(37,99,235,0.08);color:var(--blue)}
 
-/* ─── CERTS ─── */
 #certifications{background:var(--bg)}
 .cr-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.1rem;margin-top:3rem}
 .cr-card{background:var(--surface);border:1.5px dashed rgba(37,99,235,0.18);border-radius:var(--r);padding:1.5rem;display:flex;gap:1rem;align-items:flex-start;transition:all .2s}
@@ -804,7 +822,6 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .cr-s.done{background:#ECFDF5;color:#065F46}
 .cr-s.soon{background:var(--bg3);color:var(--ink3)}
 
-/* ─── EDUCATION ─── */
 #education{background:var(--bg2)}
 .ed-timeline{margin-top:3rem;display:flex;flex-direction:column;gap:1.4rem;padding-left:0}
 .ed-item{display:flex;gap:1.5rem;align-items:flex-start;position:relative}
@@ -822,7 +839,6 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .ed-badges{display:flex;gap:7px;flex-wrap:wrap}
 .ed-b{padding:3px 11px;border-radius:999px;font-size:.68rem;font-weight:600;background:rgba(37,99,235,0.08);color:var(--blue);border:1px solid rgba(37,99,235,0.15)}
 
-/* ─── CONTACT ─── */
 #contact{background:linear-gradient(135deg,#0A1628 0%,#0D1F3C 50%,#112244 100%);position:relative;overflow:hidden}
 .ct-orb1{position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,0.18) 0%,transparent 70%);right:-100px;bottom:-100px;pointer-events:none}
 .ct-orb2{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.12) 0%,transparent 70%);left:-50px;top:-50px;pointer-events:none}
@@ -839,7 +855,6 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .btn-wa{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#fff;padding:13px 32px;border-radius:999px;text-decoration:none;font-weight:700;font-size:.93rem;transition:all .2s;box-shadow:0 4px 20px rgba(37,211,102,0.35)}
 .btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(37,211,102,0.45)}
 
-/* ─── FOOTER ─── */
 footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4rem 2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;position:relative;z-index:1}
 .ft-logo{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:1rem;color:var(--ink);text-decoration:none}
 .ft-copy{font-size:.76rem;color:var(--ink3)}
@@ -856,9 +871,14 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
 @media(max-width:960px){
   .h-inner{grid-template-columns:1fr}
   .h-visual{display:none}
-  .feat-master { grid-template-columns: 1fr; padding: 2rem; }
-  .fm-visual { height: 400px; margin-top: 2rem; }
-  .fm-phone { width: 180px; height: 380px; }
+  .proj-hero-top { grid-template-columns: 1fr; }
+  .proj-info { padding: 2.5rem; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .proj-visual { min-height: 320px; }
+  .proj-metrics { grid-template-columns: repeat(2, 1fr); }
+  .metric-item:nth-child(2) { border-right: none; }
+  .metric-item:nth-child(3), .metric-item:nth-child(4) { border-top: 1px solid rgba(255,255,255,0.08); }
+  .modal-banner, .modal-body, .modal-footer { padding: 2rem; }
+  .outcome-grid { grid-template-columns: 1fr; }
   .nav-links{display:none}
   .ab-grid{grid-template-columns:1fr;gap:2rem}
 }
@@ -1163,56 +1183,160 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
       <button class="pf-btn" data-f="desktop">Desktop</button>
     </div>
 
-    <div class="feat-master reveal">
-      
-      <div class="fm-info">
-        <div class="fm-badge">⭐ Featured Project</div>
-        <h3 class="fm-title">Fo-learn<br>(Focus Learning)</h3>
-        <p class="fm-desc">Aplikasi mobile edukasi super mulus untuk persiapan UTBK. Dilengkapi fitur <em>Flash Learning</em> ala TikTok, simulasi TryOut, analitik performa, dan sistem premium terintegrasi <em>payment gateway</em>.</p>
-        
-        <div class="fm-tags">
-          <span class="fm-tag">Flutter</span>
-          <span class="fm-tag">Dart</span>
-          <span class="fm-tag">Firebase</span>
-          <span class="fm-tag">Payment Gateway</span>
+    <article class="proj-hero reveal" data-c="mobile">
+      <div class="proj-hero-top">
+        <div class="proj-info">
+          <div class="proj-status-row">
+            <span class="fm-badge" style="background:rgba(182, 217, 108, 0.2); color:#B6D96C; border-color:rgba(182, 217, 108, 0.4);">⭐ New Project</span>
+            <span class="fm-badge green" style="background:rgba(31, 92, 58, 0.2); color:#4ADE80; border-color:rgba(31, 92, 58, 0.4);">⏳ In Progress · 2026</span>
+          </div>
+
+          <h3 class="proj-name">BATIM GADAI</h3>
+          <p class="proj-tagline" style="color:#B6D96C;">Aplikasi Nasabah Pegadaian Digital</p>
+
+          <p class="proj-desc">Aplikasi Android yang menjadi antarmuka utama bagi nasabah PT Bintang Timur. Mempermudah nasabah memantau pinjaman, melakukan perpanjangan/pelunasan via Midtrans, serta simulasi gadai langsung dari genggaman.</p>
+
+          <div class="fm-tags" style="margin-bottom: 2rem;">
+            <span class="fm-tag">Flutter 3.x</span>
+            <span class="fm-tag">Riverpod</span>
+            <span class="fm-tag">Laravel API</span>
+            <span class="fm-tag">Midtrans</span>
+          </div>
+
+          <div class="proj-actions">
+            <button class="btn-primary-sm" onclick="openModal('modalBatim')" style="background:#1F5C3A; box-shadow:0 4px 15px rgba(31,92,58,0.3);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              Detail Case Study
+            </button>
+          </div>
         </div>
 
-        <a href="https://github.com/alviansyahny/fo-learn" target="_blank" class="fm-link">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          Lihat Source Code di GitHub
-        </a>
+        <div class="proj-visual">
+          <div style="position:absolute; width:400px; height:400px; background:radial-gradient(circle, rgba(182,217,108,0.15) 0%, transparent 70%); pointer-events:none;"></div>
+          
+          <div class="phone-stage">
+            <div class="phone phone-l" style="background:#000; border-color:rgba(31,92,58,0.2);">
+              <div class="phone-notch"></div>
+              <div class="phone-screen" style="padding:0; background:#1F5C3A;">
+                <img src="assets/batim-1.png" alt="Simulasi Batim Gadai" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+            </div>
+
+            <div class="phone phone-c" style="background:#000; border-color:rgba(31,92,58,0.4); box-shadow:0 30px 60px rgba(0,0,0,0.5), 0 0 0 2px rgba(182,217,108,0.3);">
+              <div class="phone-notch"></div>
+              <div class="phone-screen" style="padding:0; background:#1F5C3A;">
+                <img src="assets/batim-2.png" alt="Beranda Batim Gadai" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+            </div>
+
+            <div class="phone phone-r" style="background:#000; border-color:rgba(31,92,58,0.2);">
+              <div class="phone-notch"></div>
+              <div class="phone-screen" style="padding:0; background:#1F5C3A;">
+                <img src="assets/batim-3.png" alt="Pinjaman Batim Gadai" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="fm-visual">
-        
-        <div class="fm-phone hp-left">
-          <div class="fm-notch"></div>
-          <div class="fm-screen" style="background: linear-gradient(160deg, #1E3A5F, #3B82F6);">
-            <img src="assets/screenshot-folearn-2.png" alt="Flash Learning Screen">
+      <div class="proj-metrics">
+        <div class="metric-item">
+          <div class="metric-val" style="color:#B6D96C;">WIP</div>
+          <div class="metric-label">Status Proyek</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">API</div>
+          <div class="metric-label">Laravel Sanctum</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">OTP</div>
+          <div class="metric-label">WhatsApp Auth</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">State</div>
+          <div class="metric-label">Riverpod 2.x</div>
+        </div>
+      </div>
+    </article>
+
+    <article class="proj-hero reveal" data-c="mobile">
+      <div class="proj-hero-top">
+        <div class="proj-info">
+          <div class="proj-status-row">
+            <span class="fm-badge">⭐ Featured Project</span>
+            <span class="fm-badge green">🚀 Shipped · 2025</span>
+          </div>
+
+          <h3 class="proj-name">Fo-learn</h3>
+          <p class="proj-tagline">Focus Learning — UTBK Prep App</p>
+
+          <p class="proj-desc">Aplikasi mobile edukasi super mulus untuk persiapan UTBK yang dirancang untuk Gen-Z. Dilengkapi fitur <em>Flash Learning</em> ala TikTok, simulasi TryOut, analitik performa, dan sistem premium terintegrasi <em>payment gateway</em>.</p>
+
+          <div class="fm-tags">
+            <span class="fm-tag">Flutter</span>
+            <span class="fm-tag">Dart</span>
+            <span class="fm-tag">Firebase</span>
+            <span class="fm-tag">Midtrans</span>
+          </div>
+
+          <div class="proj-actions">
+            <button class="btn-primary-sm" onclick="openModal('modalFolearn')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              Detail Case Study
+            </button>
+            <a href="https://github.com/alviansyahny/fo-learn" target="_blank" class="btn-ghost-sm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
           </div>
         </div>
 
-        <div class="fm-phone hp-center">
-          <div class="fm-notch"></div>
-          <div class="fm-screen" style="background: linear-gradient(160deg, #1E3A5F, #2563EB);">
-            <img src="assets/screenshot-folearn-1.png" alt="Splash Screen">
+        <div class="proj-visual">
+          <div class="phone-stage">
+            <div class="phone phone-l" style="background:#000; border-color:#1e293b;">
+              <div class="phone-notch"></div>
+              <div class="phone-screen" style="padding:0; background: linear-gradient(160deg, #1E3A5F, #3B82F6);">
+                <img src="assets/screenshot-folearn-2.png" alt="Flash Learning Screen" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+            </div>
+            <div class="phone phone-c" style="background:#000; border-color:#0f172a;">
+              <div class="phone-notch"></div>
+              <div class="phone-screen" style="padding:0; background: linear-gradient(160deg, #1E3A5F, #2563EB);">
+                <img src="assets/screenshot-folearn-1.png" alt="Splash Screen" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+            </div>
+            <div class="phone phone-r" style="background:#000; border-color:#1e293b;">
+              <div class="phone-notch"></div>
+              <div class="phone-screen" style="padding:0; background: linear-gradient(160deg, #1E3A5F, #60A5FA);">
+                <img src="assets/screenshot-folearn-3.png" alt="TryOut Screen" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="fm-phone hp-right">
-          <div class="fm-notch"></div>
-          <div class="fm-screen" style="background: linear-gradient(160deg, #1E3A5F, #60A5FA);">
-            <img src="assets/screenshot-folearn-3.png" alt="TryOut Screen">
-          </div>
-        </div>
-
       </div>
 
-    </div>
+      <div class="proj-metrics">
+        <div class="metric-item">
+          <div class="metric-val">3 <span>bln</span></div>
+          <div class="metric-label">Waktu Pengerjaan</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">Solo</div>
+          <div class="metric-label">Dev & UI/UX</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">4</div>
+          <div class="metric-label">Fitur Inti</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val">60 <span>fps</span></div>
+          <div class="metric-label">Performa Aplikasi</div>
+        </div>
+      </div>
+    </article>
 
     <div class="pj-grid">
-      
-      <div class="pj-card reveal d1">
+      <div class="pj-card reveal d1" data-c="uiux">
         <div class="pj-thumb">
           <div class="b-mock">
             <div class="b-mock-bar">
@@ -1230,7 +1354,7 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
         </div>
       </div>
 
-      <div class="pj-card reveal d2">
+      <div class="pj-card reveal d2" data-c="desktop">
         <div class="pj-thumb">
           <div class="b-mock">
             <div class="b-mock-bar">
@@ -1247,7 +1371,6 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
           <p class="pj-desc">Juara 3 EPIM-TI 2025. Perancangan UI/UX flow transaksi yang intuitif berbasis Java.</p>
         </div>
       </div>
-
     </div>
 
   </div>
@@ -1331,6 +1454,153 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
   <div class="ft-links"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact">Contact</a></div>
 </footer>
 
+<div id="modalBatim" class="modal-bg" onclick="handleOverlayClick(event, 'modalBatim')">
+  <div class="modal">
+    <div class="modal-banner" style="background: linear-gradient(135deg, #174a2e 0%, #0F2A5C 100%);">
+      <button class="modal-close" onclick="closeModal('modalBatim')" aria-label="Close">✕</button>
+      <div class="fm-badge" style="margin-bottom: 1rem; background:rgba(182, 217, 108, 0.2); color:#B6D96C; border-color:rgba(182, 217, 108, 0.4);">In Progress — 2026</div>
+      <h2 class="modal-proj-title">Membangun BATIM GADAI Mobile</h2>
+      <p class="modal-proj-sub">Aplikasi Android yang menjadi antarmuka utama bagi nasabah PT Bintang Timur dalam mengakses layanan gadai secara digital dan memantau status pinjaman.</p>
+      
+      <div class="modal-meta-row">
+        <div>
+          <div class="modal-meta-key" style="color:#B6D96C;">Peran</div>
+          <div class="modal-meta-val">Mobile Developer</div>
+        </div>
+        <div>
+          <div class="modal-meta-key" style="color:#B6D96C;">Platform</div>
+          <div class="modal-meta-val">Android (Flutter)</div>
+        </div>
+        <div>
+          <div class="modal-meta-key" style="color:#B6D96C;">Status</div>
+          <div class="modal-meta-val" style="color: #B6D96C;">Sedang Dikembangkan</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num" style="color:#1F5C3A; background:rgba(31,92,58,0.1);">01</span> Arsitektur Sistem</h3>
+        <p class="cs-p">Aplikasi ini terhubung langsung dengan sistem web BATIM GADAI melalui <strong>REST API berbasis Laravel Sanctum</strong>. Platform digital ini terbagi menjadi dua komponen utama: <em>Web System</em> untuk Superadmin/Officer (repo terpisah) dan <em>Mobile App</em> ini khusus untuk nasabah.</p>
+      </div>
+
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num" style="color:#1F5C3A; background:rgba(31,92,58,0.1);">02</span> Keunggulan & Fitur Utama</h3>
+        <div class="tech-item" style="border-left-color:#1F5C3A;">
+          <div class="tech-item-title">Login Tanpa Password (OTP)</div>
+          <div class="cs-p" style="font-size: 0.9rem;">Nasabah cukup input nomor handphone, terima OTP via WhatsApp, dan buat PIN 6 digit untuk keamanan akses.</div>
+        </div>
+        <div class="tech-item" style="border-left-color:#1F5C3A;">
+          <div class="tech-item-title">Pembayaran Online (Midtrans)</div>
+          <div class="cs-p" style="font-size: 0.9rem;">Perpanjangan masa gadai dan pelunasan dapat dilakukan secara online melalui integrasi <em>Payment Gateway</em> Midtrans kapan saja tanpa perlu ke outlet.</div>
+        </div>
+        <div class="tech-item" style="border-left-color:#1F5C3A;">
+          <div class="tech-item-title">Pantau & Simulasi Real-time</div>
+          <div class="cs-p" style="font-size: 0.9rem;">Memantau seluruh transaksi gadai aktif, tanggal jatuh tempo, riwayat, serta fitur simulasi untuk estimasi nilai pinjaman berdasarkan harga pasar.</div>
+        </div>
+      </div>
+
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num" style="color:#1F5C3A; background:rgba(31,92,58,0.1);">03</span> Manajemen Hak Akses</h3>
+        <p class="cs-p">Sistem membedakan dua tipe pengguna: <strong>Pengunjung</strong> (login via OTP tapi belum verifikasi CIF) yang hanya bisa mengakses Beranda dan Simulasi, serta <strong>Nasabah</strong> (terverifikasi KTP + CIF) yang memiliki akses penuh ke fitur Pinjaman, Pembayaran, dan SBG.</p>
+      </div>
+
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num" style="color:#1F5C3A; background:rgba(31,92,58,0.1);">04</span> Tech Stack & Desain</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px;">
+          <span style="font-size:0.75rem; font-weight:600; padding:6px 14px; border-radius:999px; background:rgba(31,92,58,0.06); color:#1F5C3A; border:1px solid rgba(31,92,58,0.15);">Flutter 3.x</span>
+          <span style="font-size:0.75rem; font-weight:600; padding:6px 14px; border-radius:999px; background:rgba(31,92,58,0.06); color:#1F5C3A; border:1px solid rgba(31,92,58,0.15);">Riverpod 2.x</span>
+          <span style="font-size:0.75rem; font-weight:600; padding:6px 14px; border-radius:999px; background:rgba(31,92,58,0.06); color:#1F5C3A; border:1px solid rgba(31,92,58,0.15);">Dio 5.x</span>
+          <span style="font-size:0.75rem; font-weight:600; padding:6px 14px; border-radius:999px; background:rgba(31,92,58,0.06); color:#1F5C3A; border:1px solid rgba(31,92,58,0.15);">Go_router 13.x</span>
+          <span style="font-size:0.75rem; font-weight:600; padding:6px 14px; border-radius:999px; background:rgba(31,92,58,0.06); color:#1F5C3A; border:1px solid rgba(31,92,58,0.15);">Midtrans SDK</span>
+          <span style="font-size:0.75rem; font-weight:600; padding:6px 14px; border-radius:999px; background:rgba(31,92,58,0.06); color:#1F5C3A; border:1px solid rgba(31,92,58,0.15);">Geolocator</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-s" onclick="closeModal('modalBatim')">Tutup</button>
+    </div>
+  </div>
+</div>
+
+<div id="modalFolearn" class="modal-bg" onclick="handleOverlayClick(event, 'modalFolearn')">
+  <div class="modal">
+    <div class="modal-banner">
+      <button class="modal-close" onclick="closeModal('modalFolearn')" aria-label="Close">✕</button>
+      <div class="fm-badge" style="margin-bottom: 1rem;">Case Study — 2025</div>
+      <h2 class="modal-proj-title">Membangun Fo-Learn<br>dari Nol</h2>
+      <p class="modal-proj-sub">Aplikasi edukasi berbasis Flutter yang dirancang untuk menarik perhatian Gen-Z melalui pembelajaran format pendek, simulasi ujian real-time, dan alur langganan premium yang mulus.</p>
+      
+      <div class="modal-meta-row">
+        <div>
+          <div class="modal-meta-key">Peran</div>
+          <div class="modal-meta-val">Solo Dev & UI/UX</div>
+        </div>
+        <div>
+          <div class="modal-meta-key">Platform</div>
+          <div class="modal-meta-val">Android (Flutter)</div>
+        </div>
+        <div>
+          <div class="modal-meta-key">Status</div>
+          <div class="modal-meta-val" style="color: #34D399;">Selesai (Shipped)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-body">
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num">01</span> Masalah</h3>
+        <p class="cs-p">Siswa SMA yang bersiap menghadapi UTBK sering merasa bosan dengan aplikasi bimbel konvensional yang kaku dan penuh teks panjang. Hal ini bertolak belakang dengan kebiasaan konsumsi konten Gen-Z yang terbiasa dengan video pendek bertempo cepat.</p>
+      </div>
+
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num">02</span> Solusi: Flash Learning</h3>
+        <p class="cs-p">Membawa materi UTBK dalam format <strong>Flash Learning</strong> layaknya TikTok/Reels. Setiap sesi dikemas di bawah 90 detik, membuat belajar terasa ringan dan adiktif.</p>
+        <p class="cs-p">Fitur ini dipadukan dengan <strong>TryOut Simulator</strong> berbatas waktu, penilaian otomatis, dan analitik performa. Sistem Freemium diatur dengan integrasi <strong>Midtrans Payment Gateway</strong> untuk akses materi premium.</p>
+      </div>
+
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num">03</span> Tantangan Teknis</h3>
+        <div class="tech-item">
+          <div class="tech-item-title">Manajemen State Video & Memory Leak</div>
+          <div class="cs-p" style="font-size: 0.9rem;"><strong>Masalah:</strong> Video yang di-<em>scroll</em> tetap berjalan di latar belakang, menyebabkan <em>lag</em>. <br><strong>Solusi:</strong> Mengimplementasikan <em>lifecycle manager</em> khusus di Flutter sehingga <em>controller</em> dimatikan saat di luar layar, menjaga performa tetap 60fps.</div>
+        </div>
+        <div class="tech-item">
+          <div class="tech-item-title">Webhook Pembayaran Real-Time</div>
+          <div class="cs-p" style="font-size: 0.9rem;"><strong>Masalah:</strong> Membuka akses premium otomatis saat pembayaran sukses tanpa <em>refresh</em>. <br><strong>Solusi:</strong> Firebase Cloud Function menerima <em>webhook</em> Midtrans dan mengupdate Firestore. Aplikasi menggunakan <code style="background:var(--bg3);padding:2px 6px;border-radius:4px;color:var(--blue);font-family:monospace">StreamBuilder</code> untuk mendeteksi perubahan seketika.</div>
+        </div>
+      </div>
+
+      <div class="cs-block">
+        <h3 class="cs-h"><span class="cs-h-num">04</span> Hasil (Outcomes)</h3>
+        <div class="outcome-grid">
+          <div class="outcome-card">
+            <div class="outcome-num">60fps</div>
+            <div class="outcome-desc">Scroll mulus di Feed</div>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-num">&lt;3 dtk</div>
+            <div class="outcome-desc">Aktivasi Premium</div>
+          </div>
+          <div class="outcome-card">
+            <div class="outcome-num">4</div>
+            <div class="outcome-desc">Modul Utama Selesai</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <a href="https://github.com/alviansyahny/fo-learn" target="_blank" class="btn-primary-sm">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        View Repository
+      </a>
+      <button class="btn-s" onclick="closeModal('modalFolearn')">Tutup</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ── TYPEWRITER ──
 const roles=['Frontend Developer','Mobile Flutter Dev','UI/UX Designer','Mahasiswa D4 TI'];
@@ -1386,13 +1656,34 @@ document.querySelectorAll('.pf-btn').forEach(btn=>{
     document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));
     btn.classList.add('active');
     const f=btn.dataset.f;
-    document.querySelectorAll('.pj-card, .feat-master').forEach(c=>{
-      // Periksa dataset "c" pada pj-card atau data-c pada feat-master 
-      const category = c.dataset.c || 'mobile'; // feat-master punya data-c="mobile"
+    document.querySelectorAll('.pj-card, .proj-hero').forEach(c=>{
+      // Periksa dataset "c" pada pj-card atau data-c pada proj-hero 
+      const category = c.dataset.c || 'mobile'; // proj-hero punya data-c="mobile"
       const show=(f==='all'||category===f);
       c.style.display=show?'':'none';
     });
   });
+});
+// ── MODAL LOGIC ──
+function openModal(modalId) {
+  document.getElementById(modalId).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e, modalId) {
+  if (e.target === document.getElementById(modalId)) closeModal(modalId);
+}
+document.addEventListener('keydown', e => { 
+  if (e.key === 'Escape') {
+    const openModals = document.querySelectorAll('.modal-bg.open');
+    openModals.forEach(modal => {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  } 
 });
 </script>
 </body>
