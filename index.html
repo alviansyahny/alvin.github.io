@@ -203,6 +203,10 @@ h2.title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(
 .b-mock{width:100%;max-width:250px;height:140px;background:#fff;border-radius:8px;border:2px solid rgba(37,99,235,0.2);overflow:hidden;box-shadow:0 10px 20px rgba(0,0,0,0.05)}
 .b-mock-bar{height:20px;background:#DBEAFE;display:flex;align-items:center;gap:4px;padding:0 8px;border-bottom:1px solid rgba(37,99,235,0.1)}
 .b-mock-dot{width:6px;height:6px;border-radius:50%;background:#CBD5E1}
+.pj-open-row{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:.9rem}
+.pj-open-label{font-size:.78rem;font-weight:700;color:var(--ink2)}
+.pj-open-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;font-size:.78rem;font-weight:700;text-decoration:none;border:1.5px solid var(--border2);color:var(--blue);background:rgba(37,99,235,0.05);transition:all .2s}
+.pj-open-btn:hover{background:var(--blue);color:#fff;border-color:var(--blue);transform:translateY(-2px)}
 .modal-bg{position:fixed;inset:0;background:rgba(11,29,58,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);z-index:9999;display:flex;justify-content:center;align-items:flex-start;padding:40px 20px;overflow-y:auto;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
 .modal-bg.open{opacity:1;pointer-events:auto}
 .modal{background:var(--surface);width:100%;max-width:820px;border-radius:24px;border:1px solid var(--border);overflow:hidden;transform:translateY(24px) scale(0.98);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);margin:auto;box-shadow:var(--shadow-lg)}
@@ -597,6 +601,30 @@ footer{background:var(--surface);border-top:1px solid var(--border);padding:1.4r
           <div class="pj-type">Desktop · Java · Figma</div>
           <h3 class="pj-title">Aplikasi Kasir Desktop</h3>
           <p class="pj-desc">Juara 3 EPIM-TI 2025. Perancangan UI/UX flow transaksi yang intuitif berbasis Java.</p>
+        </div>
+      </div>
+      <div class="pj-card reveal d3" data-c="uiux">
+        <div class="pj-thumb">
+          <div class="b-mock">
+            <div class="b-mock-bar"><span class="b-mock-dot" style="background:#FF5F57"></span><span class="b-mock-dot" style="background:#FEBC2E"></span><span class="b-mock-dot" style="background:#28C840"></span></div>
+            <div style="height:100%;display:flex;align-items:center;justify-content:center;background:#0a0a0a;overflow:hidden;"><img src="https://alviansyahny.github.io/web-affan-electronic/hero-amplifier.png" alt="Affan Electronic Mockup" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='<span style=\'color:#dc2626;font-weight:700;font-size:0.8rem;\'>Affan Electronic</span>'"></div>
+          </div>
+        </div>
+        <div class="pj-body">
+          <div class="pj-type">Website · UI/UX · Tailwind</div>
+          <h3 class="pj-title">Affan Electronic</h3>
+          <p class="pj-desc">Landing page untuk bengkel spesialis service &amp; racing power amplifier di Ngawi. Live dan bisa langsung dicoba.</p>
+          <div class="pj-open-row">
+            <span class="pj-open-label">Buka:</span>
+            <a class="pj-open-btn" href="https://alviansyahny.github.io/web-affan-electronic/" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+              Laptop
+            </a>
+            <a class="pj-open-btn" href="https://alviansyahny.github.io/web-affan-electronic/?view=mobile" target="_blank" rel="noopener">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg>
+              HP
+            </a>
+          </div>
         </div>
       </div>
     </div>
